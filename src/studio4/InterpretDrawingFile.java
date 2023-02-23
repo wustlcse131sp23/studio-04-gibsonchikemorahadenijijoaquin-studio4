@@ -14,11 +14,31 @@ import edu.princeton.cs.introcs.StdDraw;
  */
 public class InterpretDrawingFile {
 
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) throws FileNotFoundException 
+	{
 		JFileChooser chooser = new JFileChooser("resources");
 		chooser.showOpenDialog(null);
 		File f = new File(chooser.getSelectedFile().getPath());
 		Scanner in = new Scanner(f); //making Scanner with a File
 		
+		String shape = in.next();
+		int red = in.nextInt();
+		int green = in.nextInt();
+		int blue = in.nextInt();
+		boolean filled = in.nextBoolean();
+		double x = in.nextDouble();
+		double y = in.nextDouble();
+		double halfWidth = in.nextDouble();
+		double halfLength = in.nextDouble();
+		
+		StdDraw.setPenColor(red, green, blue);
+		if (filled)
+		{
+			StdDraw.filledRectangle(x, y, halfWidth, halfLength);
+		}
+		else
+		{
+			StdDraw.rectangle(x, y, halfWidth, halfLength);
+		}
 	}
 }
